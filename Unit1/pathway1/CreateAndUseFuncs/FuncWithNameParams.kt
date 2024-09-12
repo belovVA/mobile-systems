@@ -1,4 +1,5 @@
 fun main() {
+  println(birthdayGreeting(name = "Rover", age = 5))
   println(birthdayGreeting(age = 2, name = "Rex"))
 }
 
