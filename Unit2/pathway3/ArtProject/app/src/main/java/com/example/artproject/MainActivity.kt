@@ -107,7 +107,35 @@ fun ArtSpaceApp(modifier: Modifier = Modifier) {
             // Previous Button
             Button(
                 onClick = {
-                    //
+                    when (currentArtwork) {
+                        firstArtwork -> {
+                            currentArtwork = fourthArtwork
+                            artName = R.string.art_4_name
+                            artist = R.string.art_4_artist
+                            artYear = R.string.art_4_year
+                        }
+
+                        fourthArtwork-> {
+                            currentArtwork = thirdArtwork
+                            artName = R.string.art_3_name
+                            artist = R.string.art_3_artist
+                            artYear = R.string.art_3_year
+                        }
+
+                        thirdArtwork -> {
+                            currentArtwork = secondArtwork
+                            artName = R.string.art_2_name
+                            artist = R.string.art_2_artist
+                            artYear = R.string.art_2_year
+                        }
+
+                        else -> {
+                            currentArtwork = firstArtwork
+                            artName = R.string.art_1_name
+                            artist = R.string.art_1_artist
+                            artYear = R.string.art_1_year
+                        }
+                    }
                 },
                 modifier = Modifier
                     .height(35.dp)
@@ -119,11 +147,36 @@ fun ArtSpaceApp(modifier: Modifier = Modifier) {
 
             // Next Button
             Button(onClick = {
-
+                when (currentArtwork) {
+                    firstArtwork -> {
+                        currentArtwork = secondArtwork
+                        artName = R.string.art_2_name
+                        artist = R.string.art_2_artist
+                        artYear = R.string.art_2_year
+                    }
+                    secondArtwork -> {
+                        currentArtwork = thirdArtwork
+                        artName = R.string.art_3_name
+                        artist = R.string.art_3_artist
+                        artYear = R.string.art_3_year
+                    }
+                    thirdArtwork -> {
+                        currentArtwork = fourthArtwork
+                        artName = R.string.art_4_name
+                        artist = R.string.art_4_artist
+                        artYear = R.string.art_4_year
+                    }
+                    else -> {
+                        currentArtwork = firstArtwork
+                        artName = R.string.art_1_name
+                        artist = R.string.art_1_artist
+                        artYear = R.string.art_1_year
+                    }
+                }
             },
                 modifier = Modifier
                     .height(35.dp)
-                    .width(150.dp)) {
+                    .width(150.dp))  {
                 Text(stringResource(R.string.next_button))
             }
 
