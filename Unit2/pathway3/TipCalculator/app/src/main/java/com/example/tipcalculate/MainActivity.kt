@@ -90,6 +90,9 @@ fun TipTimeLayout() {
 fun EditNumberField(modifier: Modifier = Modifier) {
     var amountInput by remember { mutableStateOf("") }
     TextField(
+        label = {  Text(stringResource(R.string.bill_amount))},
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         value = amountInput,
         onValueChange = { amountInput = it },
         modifier = modifier
