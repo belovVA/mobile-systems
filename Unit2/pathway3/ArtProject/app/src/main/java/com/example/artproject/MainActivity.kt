@@ -178,6 +178,30 @@ fun Artist(
     }
 }
 
+@Composable
+fun ArtSpaceButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Button(onClick = { onClick },
+            modifier = Modifier
+                .height(35.dp)
+                .width(150.dp)) {
+            Text(stringResource(R.string.previous_button))
+        }
+        Button(onClick = { onClick },
+            modifier = Modifier
+                .height(35.dp)
+                .width(150.dp)) {
+            Text(stringResource(R.string.next_button))
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
