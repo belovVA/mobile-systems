@@ -64,8 +64,24 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp(modifier: Modifier = Modifier) {
-    var currentArtwork = R.drawable.bogaturi
+    val firstArtwork = R.drawable.devochka_s_persikami
+    val secondArtwork = R.drawable.bogaturi
+    val thirdArtwork = R.drawable.burlaki_na_volge
+    val fourthArtwork = R.drawable.utro_v_sosnovom_lesu
 
+    var artName by remember { mutableStateOf(R.string.art_1_name) }
+
+    var artist by remember {
+        mutableStateOf(R.string.art_1_artist)
+    }
+
+    var currentArtwork by remember {
+        mutableStateOf(firstArtwork)
+    }
+
+    var artYear by remember {
+        mutableStateOf(R.string.art_1_year)
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -78,9 +94,9 @@ fun ArtSpaceApp(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(50.dp))
         Artist(
             modifier = Modifier.padding(bottom = 40.dp),
-            artName = R.string.art_name,
-            artist = R.string.artist_name,
-            artYear = R.string.art_year,
+            artName = artName,
+            artist = artist,
+            artYear = artYear
         )
         Spacer(modifier = Modifier.height(50.dp))
         Row (
@@ -90,12 +106,12 @@ fun ArtSpaceApp(modifier: Modifier = Modifier) {
         ){
             // Previous Button
             Button(
+                onClick = {
+                    //
+                },
                 modifier = Modifier
                     .height(35.dp)
-                    .width(150.dp),
-                onClick = { /* Обработка клика */ }
-
-
+                    .width(150.dp)
             ) {
                 Text(stringResource(R.string.previous_button))
 

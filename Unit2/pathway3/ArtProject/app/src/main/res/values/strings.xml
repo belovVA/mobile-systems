@@ -7,5 +7,23 @@
     <string name="artist_name">Имя художника</string>
     <string name="art_year">Год создания</string>
 
+    <string name="art_1_name">Девочка с персиками</string>
+    <string name="art_1_artist">Валентин Серов</string>
+    <string name="art_1_year">1887</string>
+    <string name="art_1_location">Третьяковская галерея, Москва, Россия</string>
 
+    <string name="art_2_name">Богатыри</string>
+    <string name="art_2_artist">Виктор Васнецов</string>
+    <string name="art_2_year">1898</string>
+    <string name="art_2_location">Третьяковская галерея, Москва, Россия</string>
+
+    <string name="art_3_name">Бурлаки на Волге</string>
+    <string name="art_3_artist">Илья Репин</string>
+    <string name="art_3_year">1870-1873</string>
+    <string name="art_3_location">Русский музей, Санкт-Петербург, Россия</string>
+
+    <string name="art_4_name">Утро в сосновом лесу</string>
+    <string name="art_4_artist">Иван Шишкин</string>
+    <string name="art_4_year">1889</string>
+    <string name="art_4_location">Третьяковская галерея, Москва, Россия</string>
 </resources>
