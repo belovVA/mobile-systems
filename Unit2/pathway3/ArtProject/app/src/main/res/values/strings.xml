@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ArtProject</string>
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
+
+    <string name="art_name">Название картины</string>
+    <string name="artist_name">Имя художника</string>
+    <string name="art_year">Год создания</string>
+
+
 </resources>

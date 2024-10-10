@@ -1,7 +1,5 @@
 package com.example.artproject
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,17 +11,51 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.artproject.ui.theme.ArtProjectTheme
 
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.example.artproject.ui.theme.ArtProjectTheme
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             ArtProjectTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    ArtSpaceApp()
                 }
             }
         }
@@ -31,17 +63,126 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun ArtSpaceApp(modifier: Modifier = Modifier) {
+    var currentArtwork = R.drawable.bogaturi
+
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        ArtSpaceImage(
+            currentArtwork = currentArtwork
+        )
+        Spacer(modifier = Modifier.height(50.dp))
+        Artist(
+            modifier = Modifier.padding(bottom = 40.dp),
+            artName = R.string.art_name,
+            artist = R.string.artist_name,
+            artYear = R.string.art_year,
+        )
+        Spacer(modifier = Modifier.height(50.dp))
+        Row (
+            verticalAlignment = Alignment.Bottom,
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxWidth()
+        ){
+            // Previous Button
+            Button(
+                modifier = Modifier
+                    .height(35.dp)
+                    .width(150.dp),
+                onClick = { /* Обработка клика */ }
+
+
+            ) {
+                Text(stringResource(R.string.previous_button))
+
+            }
+
+            // Next Button
+            Button(onClick = {
+
+            },
+                modifier = Modifier
+                    .height(35.dp)
+                    .width(150.dp)) {
+                Text(stringResource(R.string.next_button))
+            }
+
+        }
+    }
 }
+
+@Composable
+fun ArtSpaceImage(
+    @DrawableRes currentArtwork: Int,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = Modifier
+            .height(470.dp)
+            .width(380.dp)
+            .padding(5.dp),
+        color = Color(0xD3D3D3),
+        //border = BorderStroke(),
+        tonalElevation = 5.dp,
+        shadowElevation = 5.dp,
+        //shape = RoundedCornerShape(20.dp)
+
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Image(
+                painter = painterResource(currentArtwork),
+                contentDescription = null,
+                contentScale = ContentScale
+                    .FillBounds,
+                modifier = Modifier
+                    .height(390.dp)
+                    .width(310.dp)
+                    .fillMaxWidth()
+            )
+        }
+    }
+}
+
+@Composable
+fun Artist(
+    @StringRes artName: Int,
+    @StringRes artist: Int,
+    @StringRes artYear: Int,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = stringResource(id = artName),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.displayMedium
+        )
+        Text(
+            text = stringResource(id = artist),
+            style = MaterialTheme.typography.displayLarge
+        )
+        Text(
+            text = stringResource(id = artYear),
+            style = MaterialTheme.typography.labelSmall
+        )
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    ArtProjectTheme {
-        Greeting("Android")
+    ArtProjectTheme() {
+        ArtSpaceApp()
     }
 }
