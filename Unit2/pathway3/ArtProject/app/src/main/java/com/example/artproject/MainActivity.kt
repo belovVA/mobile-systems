@@ -234,15 +234,18 @@ fun Artist(
         Text(
             text = stringResource(id = artName),
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.displayMedium
+            style = MaterialTheme.typography.headlineMedium, // Сделаем текст поменьше
+            modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
             text = stringResource(id = artist),
-            style = MaterialTheme.typography.displayLarge
+                    style = MaterialTheme.typography.headlineMedium, // Еще меньше, чем название
+            modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
             text = stringResource(id = artYear),
-            style = MaterialTheme.typography.labelSmall
+                    style = MaterialTheme.typography.headlineMedium, // Сделаем больше
+            modifier = Modifier.padding(top = 8.dp) // Добавим верхний отступ
         )
     }
 }
