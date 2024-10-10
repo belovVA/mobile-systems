@@ -74,6 +74,7 @@ fun TipTimeLayout() {
                 .padding(bottom = 16.dp, top = 40.dp)
                 .align(alignment = Alignment.Start)
         )
+        EditNumberField(modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth())
         Text(
             text = stringResource(R.string.tip_amount, "$0.00"),
             style = MaterialTheme.typography.displaySmall
@@ -82,11 +83,15 @@ fun TipTimeLayout() {
     }
 }
 
-/**
- * Calculates the tip based on the user input and format the tip amount
- * according to the local currency.
- * Example would be "$10.00".
- */
+@Composable
+fun EditNumberField(modifier: Modifier = Modifier) {
+    TextField(
+        value = "",
+        onValueChange = {},
+        modifier = modifier
+    )
+}
+
 private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
     val tip = tipPercent / 100 * amount
     return NumberFormat.getCurrencyInstance().format(tip)
